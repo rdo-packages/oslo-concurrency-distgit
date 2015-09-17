@@ -2,7 +2,7 @@
 %global pkg_name oslo-concurrency
 
 Name:           python-oslo-concurrency
-Version:        2.5.0
+Version:        2.6.0
 Release:        1%{?dist}
 Summary:        OpenStack Oslo concurrency library
 
@@ -20,7 +20,6 @@ Requires:       python-fixtures
 Requires:       python-oslo-config
 Requires:       python-oslo-i18n
 Requires:       python-oslo-utils
-Requires:       python-posix_ipc
 Requires:       python-retrying
 Requires:       python-six
 Requires:       python-fasteners
@@ -74,6 +73,9 @@ rm -fr %{buildroot}%{python2_sitelib}/%{pypi_name}/tests/
 %doc html
 
 %changelog
+* Fri Sep 18 2015 Alan Pevec <alan.pevec@redhat.com> 2.6.0-1
+- Update to upstream 2.6.0
+
 * Thu Sep 03 2015 Alan Pevec <alan.pevec@redhat.com> 2.5.0-1
 - Update to upstream 2.5.0
 
