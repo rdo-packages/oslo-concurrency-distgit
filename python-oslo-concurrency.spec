@@ -23,7 +23,7 @@ Requires:       python-oslo-utils
 Requires:       python-retrying
 Requires:       python-six
 Requires:       python-fasteners
-Requires:       python-enum
+Requires:       python-enum34
 
 %description
 Oslo concurrency library has utilities for safely running multi-thread,
