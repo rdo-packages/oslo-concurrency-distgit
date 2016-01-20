@@ -1,3 +1,5 @@
-# UUID                                  	Group Name
-#
-a623c1186e238b298d4db7d532e19e59bab4d4d8	oslo-concurrency-distgit-ptl
+# UUID          Group Name
+6ddfecad023c6f4fa3ac8c4d2583c502ea675a73 	Non-Interactive Users
+5c4811a69884187d6b81ef47d36045d219d5a2bc       	oslo-concurrency-distgit-core
+a623c1186e238b298d4db7d532e19e59bab4d4d8        	oslo-concurrency-distgit-ptl
+global:Registered-Users		Registered Users
