@@ -31,6 +31,8 @@ BuildRequires:  python-futures
 BuildRequires:  python-fixtures
 BuildRequires:  python-enum34
 BuildRequires:  python-eventlet
+# Required to compile translation files
+BuildRequires:  python-babel
 
 Requires:       python-babel
 Requires:       python-iso8601
@@ -122,6 +124,9 @@ rm -rf {test-,}requirements.txt
 %py3_build
 %endif
 
+# Generate i18n files
+%{__python2} setup.py compile_catalog -d build/lib/oslo_concurrency/locale
+
 # generate html docs
 sphinx-build doc/source html
 # remove the sphinx-build leftovers
@@ -134,6 +139,18 @@ rm -rf html/.{doctrees,buildinfo}
 %py3_install
 %endif
 
+# Install i18n .mo files (.po and .pot are not required)
+install -d -m 755 %{buildroot}%{_datadir}
+rm -f %{buildroot}%{python2_sitelib}/oslo_concurrency/locale/*/LC_*/oslo_concurrency*po
+rm -f %{buildroot}%{python2_sitelib}/oslo_concurrency/locale/*pot
+mv %{buildroot}%{python2_sitelib}/oslo_concurrency/locale %{buildroot}%{_datadir}/locale
+%if 0%{?with_python3}
+rm -rf %{buildroot}%{python3_sitelib}/oslo_concurrency/locale
+%endif
+
+# Find language files
+%find_lang oslo_concurrency --all-name
+
 %check
 %{__python2} setup.py test
 %if 0%{?with_python3}
@@ -141,7 +158,7 @@ rm -rf .testrepository
 %{__python3} setup.py test
 %endif
 
-%files -n python2-%{pkg_name}
+%files -n python2-%{pkg_name} -f oslo_concurrency.lang
 %doc README.rst
 %license LICENSE
 %{_bindir}/lockutils-wrapper
