@@ -31,6 +31,8 @@ BuildRequires:  python-futures
 BuildRequires:  python-fixtures
 BuildRequires:  python-enum34
 BuildRequires:  python-eventlet
+# Required to compile translation files
+BuildRequires:  python-babel
 
 Requires:       python-babel
 Requires:       python-iso8601
@@ -43,6 +45,7 @@ Requires:       python-retrying
 Requires:       python-six
 Requires:       python-fasteners
 Requires:       python-enum34
+Requires:       python-%{pkg_name}-lang >= %{version}-%{release}
 
 %description -n python2-%{pkg_name}
 Oslo concurrency library has utilities for safely running multi-thread,
@@ -99,12 +102,19 @@ Requires:       python3-posix_ipc
 Requires:       python3-retrying
 Requires:       python3-six
 Requires:       python3-fasteners
+Requires:       python-%{pkg_name}-lang >= %{version}-%{release}
 
 %description -n python3-%{pkg_name}
 Oslo concurrency library has utilities for safely running multi-thread,
 multi-process applications using locking mechanisms and for running
 external processes.
 %endif
+
+%package  -n python-%{pkg_name}-lang
+Summary:   Translation files for Oslo concurrency library
+
+%description -n python-%{pkg_name}-lang
+Translation files for Oslo concurrency library
 
 %description
 Oslo concurrency library has utilities for safely running multi-thread,
@@ -122,6 +132,9 @@ rm -rf {test-,}requirements.txt
 %py3_build
 %endif
 
+# Generate i18n files
+%{__python2} setup.py compile_catalog -d build/lib/oslo_concurrency/locale
+
 # generate html docs
 sphinx-build doc/source html
 # remove the sphinx-build leftovers
@@ -133,6 +146,18 @@ rm -rf html/.{doctrees,buildinfo}
 %if 0%{?with_python3}
 %py3_install
 %endif
+
+# Install i18n .mo files (.po and .pot are not required)
+install -d -m 755 %{buildroot}%{_datadir}
+rm -f %{buildroot}%{python2_sitelib}/oslo_concurrency/locale/*/LC_*/oslo_concurrency*po
+rm -f %{buildroot}%{python2_sitelib}/oslo_concurrency/locale/*pot
+mv %{buildroot}%{python2_sitelib}/oslo_concurrency/locale %{buildroot}%{_datadir}/locale
+%if 0%{?with_python3}
+rm -rf %{buildroot}%{python3_sitelib}/oslo_concurrency/locale
+%endif
+
+# Find language files
+%find_lang oslo_concurrency --all-name
 
 %check
 %{__python2} setup.py test
@@ -156,6 +181,7 @@ rm -rf .testrepository
 %files -n python-%{pkg_name}-tests
 %{python2_sitelib}/oslo_concurrency/tests
 
+%files -n python-%{pkg_name}-lang -f oslo_concurrency.lang
 
 %if 0%{?with_python3}
 %files -n python3-%{pkg_name}
