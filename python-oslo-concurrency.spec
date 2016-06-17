@@ -8,7 +8,7 @@
 %global pkg_name oslo-concurrency
 
 Name:           python-oslo-concurrency
-Version:        3.6.0
+Version:        3.7.1
 Release:        1%{?dist}
 Summary:        OpenStack Oslo concurrency library
 
@@ -167,6 +167,9 @@ rm -rf .testrepository
 %endif
 
 %changelog
+* Fri Jun 17 2016 Haikel Guemar <hguemar@fedoraproject.org> 3.7.1-1
+- Update to 3.7.1
+
 * Wed Mar 23 2016 Haikel Guemar <hguemar@fedoraproject.org> 3.6.0-
 - Update to 3.6.0
 
