@@ -45,7 +45,7 @@ Requires:       python-retrying
 Requires:       python-six
 Requires:       python-fasteners
 Requires:       python-enum34
-Requires:       python-%{pkg_name}-lang >= %{version}-%{release}
+Requires:       python-%{pkg_name}-lang = %{version}-%{release}
 
 %description -n python2-%{pkg_name}
 Oslo concurrency library has utilities for safely running multi-thread,
@@ -102,7 +102,7 @@ Requires:       python3-posix_ipc
 Requires:       python3-retrying
 Requires:       python3-six
 Requires:       python3-fasteners
-Requires:       python-%{pkg_name}-lang >= %{version}-%{release}
+Requires:       python-%{pkg_name}-lang = %{version}-%{release}
 
 %description -n python3-%{pkg_name}
 Oslo concurrency library has utilities for safely running multi-thread,
