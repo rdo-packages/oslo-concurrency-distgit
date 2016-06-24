@@ -9,7 +9,7 @@
 
 Name:           python-oslo-concurrency
 Version:        2.6.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        OpenStack Oslo concurrency library
 
 License:        ASL 2.0
@@ -164,6 +164,9 @@ rm -rf .testrepository
 %endif
 
 %changelog
+* Fri Jun 24 2016 Alan Pevec <apevec AT redhat.com> - 2.6.1-2
+- Rebuild python2 subpackage to avoid upgrade issues
+
 * Thu Jun 23 2016 Haikel Guemar <hguemar@fedoraproject.org> 2.6.1-1
 - Update to 2.6.1
 
