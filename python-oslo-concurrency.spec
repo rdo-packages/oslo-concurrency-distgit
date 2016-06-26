@@ -9,13 +9,18 @@
 
 Name:           python-oslo-concurrency
 Version:        3.7.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        OpenStack Oslo concurrency library
 
 License:        ASL 2.0
 URL:            https://launchpad.net/oslo
 Source0:        https://pypi.io/packages/source/o/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
+
+%description
+Oslo concurrency library has utilities for safely running multi-thread,
+multi-process applications using locking mechanisms and for running
+external processes.
 
 %package -n python2-%{pkg_name}
 Summary:        OpenStack Oslo concurrency library
@@ -62,17 +67,19 @@ BuildRequires:  python-fasteners
 %description -n python-%{pkg_name}-doc
 Documentation for the Oslo concurrency library.
 
-%package  -n python-%{pkg_name}-tests
+%package  -n python2-%{pkg_name}-tests
 Summary:    Tests for the Oslo concurrency library
+%{?python_provide:%python_provide python2-%{pkg_name}-tests}
 
-Requires:  python-%{pkg_name} = %{version}-%{release}
+Requires:  python2-%{pkg_name} = %{version}-%{release}
 Requires:  python-hacking
 Requires:  python-oslotest
 Requires:  python-coverage
 Requires:  python-futures
 Requires:  python-fixtures
 
-%description -n python-%{pkg_name}-tests
+
+%description -n python2-%{pkg_name}-tests
 Tests for the Oslo concurrency library.
 
 %if 0%{?with_python3}
@@ -104,12 +111,22 @@ Requires:       python3-fasteners
 Oslo concurrency library has utilities for safely running multi-thread,
 multi-process applications using locking mechanisms and for running
 external processes.
+
+%package  -n python3-%{pkg_name}-tests
+Summary:    Tests for the Oslo concurrency library
+%{?python_provide:%python_provide python3-%{pkg_name}-tests}
+
+Requires:  python3-%{pkg_name} = %{version}-%{release}
+Requires:  python3-hacking
+Requires:  python3-oslotest
+Requires:  python3-coverage
+Requires:  python3-futures
+Requires:  python3-fixtures
+
+%description -n python3-%{pkg_name}-tests
+Tests for the Oslo concurrency library.
 %endif
 
-%description
-Oslo concurrency library has utilities for safely running multi-thread,
-multi-process applications using locking mechanisms and for running
-external processes.
 
 %prep
 %setup -q -n %{pypi_name}-%{upstream_version}
@@ -129,10 +146,18 @@ rm -rf html/.{doctrees,buildinfo}
 
 
 %install
-%py2_install
 %if 0%{?with_python3}
 %py3_install
+mv %{buildroot}%{_bindir}/lockutils-wrapper %{buildroot}%{_bindir}/lockutils-wrapper-%{python3_version}
+ln -s ./lockutils-wrapper-%{python3_version} %{buildroot}%{_bindir}/lockutils-wrapper-3
 %endif
+
+%py2_install
+mv %{buildroot}%{_bindir}/lockutils-wrapper %{buildroot}%{_bindir}/lockutils-wrapper-%{python2_version}
+ln -s ./lockutils-wrapper-%{python2_version} %{buildroot}%{_bindir}/lockutils-wrapper-2
+
+ln -s ./lockutils-wrapper-%{python2_version} %{buildroot}%{_bindir}/lockutils-wrapper
+
 
 %check
 %{__python2} setup.py test
@@ -145,6 +170,8 @@ rm -rf .testrepository
 %doc README.rst
 %license LICENSE
 %{_bindir}/lockutils-wrapper
+%{_bindir}/lockutils-wrapper-2
+%{_bindir}/lockutils-wrapper-%{python2_version}
 %{python2_sitelib}/oslo_concurrency
 %{python2_sitelib}/*.egg-info
 %exclude %{python2_sitelib}/oslo_concurrency/tests
@@ -153,7 +180,7 @@ rm -rf .testrepository
 %license LICENSE
 %doc html
 
-%files -n python-%{pkg_name}-tests
+%files -n python2-%{pkg_name}-tests
 %{python2_sitelib}/oslo_concurrency/tests
 
 
@@ -161,15 +188,27 @@ rm -rf .testrepository
 %files -n python3-%{pkg_name}
 %doc README.rst
 %license LICENSE
+%{_bindir}/lockutils-wrapper-3
+%{_bindir}/lockutils-wrapper-%{python3_version}
 %{python3_sitelib}/oslo_concurrency
 %{python3_sitelib}/*.egg-info
 %exclude %{python3_sitelib}/oslo_concurrency/tests
+
+%files -n python3-%{pkg_name}-tests
+%{python3_sitelib}/oslo_concurrency/tests
 %endif
 
+
 %changelog
+* Sun Jun 26 2016 Haïkel Guémar <hguemar@fedoraproject.org> - 3.7.1-2
+- Fix python2 package pulling python3
+- Fix tests packaging
+
 * Fri Jun 17 2016 Haikel Guemar <hguemar@fedoraproject.org> 3.7.1-1
 - Update to 3.7.1
 
+* Fri Jun 03 2016 Charalampos Stratakis <cstratak@redhat.com> 3.6.0-2
+- Provide a python 3 tests subpackage
+
 * Wed Mar 23 2016 Haikel Guemar <hguemar@fedoraproject.org> 3.6.0-
 - Update to 3.6.0
-
