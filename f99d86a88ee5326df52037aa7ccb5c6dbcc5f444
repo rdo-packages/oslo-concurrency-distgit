@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa2559ec_4de28d04",
+        "filename": "python-oslo-concurrency.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2016-06-27T10:51:12Z",
+      "side": 1,
+      "message": "There is no python3-futures package (it\u0027s python2-only)",
+      "range": {
+        "startLine": 127,
+        "startChar": 11,
+        "endLine": 127,
+        "endChar": 18
+      },
+      "revId": "f99d86a88ee5326df52037aa7ccb5c6dbcc5f444",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
