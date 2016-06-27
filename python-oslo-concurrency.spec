@@ -9,7 +9,7 @@
 
 Name:           python-oslo-concurrency
 Version:        3.7.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        OpenStack Oslo concurrency library
 
 License:        ASL 2.0
@@ -113,14 +113,13 @@ multi-process applications using locking mechanisms and for running
 external processes.
 
 %package  -n python3-%{pkg_name}-tests
-Summary:    Tests for the Oslo concurrency library
+Summary:    Testes for the Oslo concurrency library
 %{?python_provide:%python_provide python3-%{pkg_name}-tests}
 
 Requires:  python3-%{pkg_name} = %{version}-%{release}
 Requires:  python3-hacking
 Requires:  python3-oslotest
 Requires:  python3-coverage
-Requires:  python3-futures
 Requires:  python3-fixtures
 
 %description -n python3-%{pkg_name}-tests
@@ -200,6 +199,9 @@ rm -rf .testrepository
 
 
 %changelog
+* Mon Jun 27 2016 Haïkel Guémar <hguemar@fedoraproject.org> - 3.7.1-3
+- Drop python3-futures dep
+
 * Sun Jun 26 2016 Haïkel Guémar <hguemar@fedoraproject.org> - 3.7.1-2
 - Fix python2 package pulling python3
 - Fix tests packaging
