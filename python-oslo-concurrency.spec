@@ -9,7 +9,7 @@
 
 Name:           python-oslo-concurrency
 Version:        2.6.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        OpenStack Oslo concurrency library
 
 License:        ASL 2.0
@@ -17,9 +17,11 @@ URL:            https://launchpad.net/oslo
 Source0:        https://pypi.io/packages/source/o/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 BuildArch:      noarch
 
-%package -n python2-%{pkg_name}
-Summary:        OpenStack Oslo concurrency library
-%{?python_provide:%python_provide python2-%{pkg_name}}
+# %{?python_provide:%python_provide python2-%{pkg_name}}
+# TEMP reverse python/python2 subpackage/provides to avoid upgrade issues
+# with yum priorities
+Provides: python2-%{pkg_name} = %{version}-%{release}
+Obsoletes: python2-%{pkg_name} < %{version}-%{release}
 
 BuildRequires:  python2-devel
 BuildRequires:  python-pbr
@@ -42,11 +44,6 @@ Requires:       python-retrying
 Requires:       python-six
 Requires:       python-fasteners
 Requires:       python-enum34
-
-%description -n python2-%{pkg_name}
-Oslo concurrency library has utilities for safely running multi-thread,
-multi-process applications using locking mechanisms and for running
-external processes.
 
 %package  -n python-%{pkg_name}-doc
 Summary:    Documentation for the Oslo concurrency library
@@ -139,7 +136,7 @@ rm -rf .testrepository
 %{__python3} setup.py test
 %endif
 
-%files -n python2-%{pkg_name}
+%files -n python-%{pkg_name}
 %doc README.rst
 %license LICENSE
 %{_bindir}/lockutils-wrapper
@@ -164,6 +161,9 @@ rm -rf .testrepository
 %endif
 
 %changelog
+* Wed Jun 29 2016 Alan Pevec <apevec AT redhat.com> - 2.6.1-3
+- Rebuild python subpackage with python2 provides to avoid upgrade issues
+
 * Fri Jun 24 2016 Alan Pevec <apevec AT redhat.com> - 2.6.1-2
 - Rebuild python2 subpackage to avoid upgrade issues
 
