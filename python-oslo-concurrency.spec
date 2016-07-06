@@ -136,11 +136,6 @@ Summary:   Translation files for Oslo concurrency library
 %description -n python-%{pkg_name}-lang
 Translation files for Oslo concurrency library
 
-%description
-Oslo concurrency library has utilities for safely running multi-thread,
-multi-process applications using locking mechanisms and for running
-external processes.
-
 %prep
 %setup -q -n %{pypi_name}-%{upstream_version}
 # Let RPM handle the dependencies
