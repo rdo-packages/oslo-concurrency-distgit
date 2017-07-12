@@ -28,6 +28,7 @@ Summary:        OpenStack Oslo concurrency library
 
 BuildRequires:  python2-devel
 BuildRequires:  python-pbr
+BuildRequires:  git
 # Required for tests
 BuildRequires:  python-hacking
 BuildRequires:  python-oslotest
@@ -62,7 +63,7 @@ Summary:    Documentation for the Oslo concurrency library
 Group:      Documentation
 
 BuildRequires:  python-sphinx
-BuildRequires:  python-oslo-sphinx
+BuildRequires:  python-openstackdocstheme
 BuildRequires:  python-fixtures
 BuildRequires:  python-oslo-utils
 BuildRequires:  python-fasteners
@@ -137,7 +138,7 @@ Summary:   Translation files for Oslo concurrency library
 Translation files for Oslo concurrency library
 
 %prep
-%setup -q -n %{pypi_name}-%{upstream_version}
+%autosetup -n %{pypi_name}-%{upstream_version} -S git
 # Let RPM handle the dependencies
 rm -rf {test-,}requirements.txt
 
@@ -151,9 +152,9 @@ rm -rf {test-,}requirements.txt
 %{__python2} setup.py compile_catalog -d build/lib/oslo_concurrency/locale
 
 # generate html docs
-sphinx-build doc/source html
+%{__python2} setup.py build_sphinx -b html
 # remove the sphinx-build leftovers
-rm -rf html/.{doctrees,buildinfo}
+rm -rf doc/build/html/.{doctrees,buildinfo}
 
 
 %install
@@ -200,7 +201,7 @@ rm -rf .testrepository
 
 %files -n python-%{pkg_name}-doc
 %license LICENSE
-%doc html
+%doc doc/build/html
 
 %files -n python2-%{pkg_name}-tests
 %{python2_sitelib}/oslo_concurrency/tests
