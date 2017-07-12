@@ -224,3 +224,4 @@ rm -rf .testrepository
 
 
 %changelog
+# REMOVEME: error caused by commit http://git.openstack.org/cgit/openstack/oslo.concurrency/commit/?id=a04f5f10e10a1acaf08dee38d7dfd817206a1c84
