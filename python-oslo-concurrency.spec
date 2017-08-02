@@ -3,6 +3,7 @@
 %endif
 
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
+%global with_doc 1
 
 %global pypi_name oslo.concurrency
 %global pkg_name oslo-concurrency
@@ -58,6 +59,8 @@ Oslo concurrency library has utilities for safely running multi-thread,
 multi-process applications using locking mechanisms and for running
 external processes.
 
+%if 0%{?with_doc}
+
 %package  -n python-%{pkg_name}-doc
 Summary:    Documentation for the Oslo concurrency library
 Group:      Documentation
@@ -70,6 +73,8 @@ BuildRequires:  python-fasteners
 
 %description -n python-%{pkg_name}-doc
 Documentation for the Oslo concurrency library.
+
+%endif
 
 %package  -n python2-%{pkg_name}-tests
 Summary:    Tests for the Oslo concurrency library
@@ -151,11 +156,12 @@ rm -rf {test-,}requirements.txt
 # Generate i18n files
 %{__python2} setup.py compile_catalog -d build/lib/oslo_concurrency/locale
 
+%if 0%{?with_doc}
 # generate html docs
 %{__python2} setup.py build_sphinx -b html
 # remove the sphinx-build leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
-
+%endif
 
 %install
 %if 0%{?with_python3}
@@ -199,9 +205,11 @@ rm -rf .testrepository
 %{python2_sitelib}/*.egg-info
 %exclude %{python2_sitelib}/oslo_concurrency/tests
 
+%if 0%{?with_doc}
 %files -n python-%{pkg_name}-doc
 %license LICENSE
 %doc doc/build/html
+%endif
 
 %files -n python2-%{pkg_name}-tests
 %{python2_sitelib}/oslo_concurrency/tests
