@@ -43,9 +43,9 @@ BuildRequires:  python-babel
 Requires:       python-babel
 Requires:       python-iso8601
 Requires:       python-fixtures
-Requires:       python-oslo-config
-Requires:       python-oslo-i18n
-Requires:       python-oslo-utils
+Requires:       python-oslo-config >= 4.0.0
+Requires:       python-oslo-i18n >= 2.1.0
+Requires:       python-oslo-utils >= 3.20.0
 Requires:       python-posix_ipc
 Requires:       python-retrying
 Requires:       python-six
@@ -103,9 +103,9 @@ BuildRequires:  python3-eventlet
 Requires:       python3-babel
 Requires:       python3-iso8601
 Requires:       python3-fixtures
-Requires:       python3-oslo-config
-Requires:       python3-oslo-i18n
-Requires:       python3-oslo-utils
+Requires:       python3-oslo-config >= 4.0.0
+Requires:       python3-oslo-i18n >= 2.1.0
+Requires:       python3-oslo-utils >= 3.20.0
 Requires:       python3-posix_ipc
 Requires:       python3-retrying
 Requires:       python3-six
