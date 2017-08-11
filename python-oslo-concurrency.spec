@@ -9,8 +9,8 @@
 %global pkg_name oslo-concurrency
 
 Name:           python-oslo-concurrency
-Version:        XXX
-Release:        XXX
+Version:        3.21.0
+Release:        1%{?dist}
 Summary:        OpenStack Oslo concurrency library
 
 License:        ASL 2.0
@@ -226,3 +226,6 @@ rm -rf .testrepository
 
 
 %changelog
+* Fri Aug 11 2017 Alfredo Moralejo <amoralej@redhat.com> 3.21.0-1
+- Update to 3.21.0
+
