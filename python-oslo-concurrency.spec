@@ -33,7 +33,6 @@ BuildRequires:  git
 # Required for tests
 BuildRequires:  python-hacking
 BuildRequires:  python-oslotest
-BuildRequires:  python-coverage
 BuildRequires:  python-futures
 BuildRequires:  python-fixtures
 BuildRequires:  python-enum34
@@ -80,7 +79,6 @@ Summary:    Tests for the Oslo concurrency library
 Requires:  python2-%{pkg_name} = %{version}-%{release}
 Requires:  python-hacking
 Requires:  python-oslotest
-Requires:  python-coverage
 Requires:  python-futures
 Requires:  python-fixtures
 
@@ -98,7 +96,6 @@ BuildRequires:  python3-pbr
 # Required for tests
 BuildRequires:  python3-hacking
 BuildRequires:  python3-oslotest
-BuildRequires:  python3-coverage
 BuildRequires:  python3-fixtures
 BuildRequires:  python3-eventlet
 
@@ -122,7 +119,6 @@ Summary:    Tests for the Oslo concurrency library
 Requires:  python3-%{pkg_name} = %{version}-%{release}
 Requires:  python3-hacking
 Requires:  python3-oslotest
-Requires:  python3-coverage
 Requires:  python3-fixtures
 
 %description -n python3-%{pkg_name}-tests
