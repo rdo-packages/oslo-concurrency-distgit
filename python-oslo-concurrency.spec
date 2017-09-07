@@ -8,6 +8,14 @@
 %global pypi_name oslo.concurrency
 %global pkg_name oslo-concurrency
 
+%global common_desc \
+Oslo concurrency library has utilities for safely running multi-thread, \
+multi-process applications using locking mechanisms and for running \
+external processes.
+
+%global common_desc2 \
+Tests for the Oslo concurrency library.
+
 Name:           python-oslo-concurrency
 Version:        XXX
 Release:        XXX
@@ -19,9 +27,7 @@ Source0:        https://tarballs.openstack.org/%{pypi_name}/%{pypi_name}-%{upstr
 BuildArch:      noarch
 
 %description
-Oslo concurrency library has utilities for safely running multi-thread,
-multi-process applications using locking mechanisms and for running
-external processes.
+%{common_desc}
 
 %package -n python2-%{pkg_name}
 Summary:        OpenStack Oslo concurrency library
@@ -50,9 +56,7 @@ Requires:       python-enum34
 Requires:       python-%{pkg_name}-lang = %{version}-%{release}
 
 %description -n python2-%{pkg_name}
-Oslo concurrency library has utilities for safely running multi-thread,
-multi-process applications using locking mechanisms and for running
-external processes.
+%{common_desc}
 
 %if 0%{?with_doc}
 
@@ -84,7 +88,7 @@ Requires:  python-fixtures
 
 
 %description -n python2-%{pkg_name}-tests
-Tests for the Oslo concurrency library.
+%{common_desc2}
 
 %if 0%{?with_python3}
 %package -n python3-%{pkg_name}
@@ -108,9 +112,7 @@ Requires:       python3-fasteners
 Requires:       python-%{pkg_name}-lang = %{version}-%{release}
 
 %description -n python3-%{pkg_name}
-Oslo concurrency library has utilities for safely running multi-thread,
-multi-process applications using locking mechanisms and for running
-external processes.
+%{common_desc}
 
 %package  -n python3-%{pkg_name}-tests
 Summary:    Tests for the Oslo concurrency library
@@ -122,7 +124,7 @@ Requires:  python3-oslotest
 Requires:  python3-fixtures
 
 %description -n python3-%{pkg_name}-tests
-Tests for the Oslo concurrency library.
+%{common_desc2}
 %endif
 
 %package  -n python-%{pkg_name}-lang
