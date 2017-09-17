@@ -70,6 +70,10 @@ Group:      Documentation
 BuildRequires:  python-sphinx
 BuildRequires:  python-openstackdocstheme
 BuildRequires:  python-fixtures
+BuildRequires:  python-oslo-config
+BuildRequires:  python-oslo-utils
+BuildRequires:  python-fasteners
+BuildRequires:  openstack-macros
 
 %description -n python-%{pkg_name}-doc
 Documentation for the Oslo concurrency library.
@@ -136,7 +140,7 @@ Translation files for Oslo concurrency library
 %prep
 %autosetup -n %{pypi_name}-%{upstream_version} -S git
 # Let RPM handle the dependencies
-rm -rf {test-,}requirements.txt
+%py_req_cleanup
 
 %build
 %py2_build
