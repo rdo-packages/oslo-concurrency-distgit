@@ -9,7 +9,7 @@
 %global pkg_name oslo-concurrency
 
 Name:           python-oslo-concurrency
-Version:        3.21.0
+Version:        3.21.1
 Release:        1%{?dist}
 Summary:        OpenStack Oslo concurrency library
 
@@ -226,6 +226,9 @@ rm -rf .testrepository
 
 
 %changelog
+* Thu Sep 28 2017 rdo-trunk <javier.pena@redhat.com> 3.21.1-1
+- Update to 3.21.1
+
 * Fri Aug 11 2017 Alfredo Moralejo <amoralej@redhat.com> 3.21.0-1
 - Update to 3.21.0
 
