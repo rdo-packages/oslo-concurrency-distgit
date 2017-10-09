@@ -43,6 +43,9 @@ BuildRequires:  python-futures
 BuildRequires:  python-fixtures
 BuildRequires:  python-enum34
 BuildRequires:  python-eventlet
+BuildRequires:  python-oslo-config
+BuildRequires:  python-oslo-utils
+BuildRequires:  python-fasteners
 # Required to compile translation files
 BuildRequires:  python-babel
 
@@ -67,9 +70,6 @@ Group:      Documentation
 BuildRequires:  python-sphinx
 BuildRequires:  python-openstackdocstheme
 BuildRequires:  python-fixtures
-BuildRequires:  python-oslo-config
-BuildRequires:  python-oslo-utils
-BuildRequires:  python-fasteners
 
 %description -n python-%{pkg_name}-doc
 Documentation for the Oslo concurrency library.
