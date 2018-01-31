@@ -34,28 +34,38 @@ Summary:        OpenStack Oslo concurrency library
 %{?python_provide:%python_provide python2-%{pkg_name}}
 
 BuildRequires:  python2-devel
-BuildRequires:  python-pbr
+BuildRequires:  python2-pbr
 BuildRequires:  git
 # Required for tests
-BuildRequires:  python-hacking
-BuildRequires:  python-oslotest
-BuildRequires:  python-futures
-BuildRequires:  python-fixtures
-BuildRequires:  python-enum34
-BuildRequires:  python-eventlet
-BuildRequires:  python-oslo-config
-BuildRequires:  python-oslo-utils
-BuildRequires:  python-fasteners
+BuildRequires:  python2-hacking
+BuildRequires:  python2-oslotest
+BuildRequires:  python2-fixtures
+BuildRequires:  python2-eventlet
+BuildRequires:  python2-oslo-config
+BuildRequires:  python2-oslo-utils
+BuildRequires:  python2-fasteners
 # Required to compile translation files
-BuildRequires:  python-babel
+BuildRequires:  python2-babel
+%if 0%{?fedora} > 0
+BuildRequires:  python2-futures
+BuildRequires:  python2-enum34
+%else
+BuildRequires:  python-futures
+BuildRequires:  python-enum34
+%endif
 
-Requires:       python-fixtures
-Requires:       python-oslo-config >= 2:4.0.0
-Requires:       python-oslo-i18n >= 2.1.0
-Requires:       python-oslo-utils >= 3.20.0
-Requires:       python-six
-Requires:       python-fasteners
+Requires:       python2-pbr
+Requires:       python2-fixtures
+Requires:       python2-oslo-config >= 2:5.1.0
+Requires:       python2-oslo-i18n >= 3.15.3
+Requires:       python2-oslo-utils >= 3.33.0
+Requires:       python2-six
+Requires:       python2-fasteners
+%if 0%{?fedora} > 0
+Requires:       python2-enum34
+%else
 Requires:       python-enum34
+%endif
 Requires:       python-%{pkg_name}-lang = %{version}-%{release}
 
 %description -n python2-%{pkg_name}
@@ -67,9 +77,9 @@ Requires:       python-%{pkg_name}-lang = %{version}-%{release}
 Summary:    Documentation for the Oslo concurrency library
 Group:      Documentation
 
-BuildRequires:  python-sphinx
-BuildRequires:  python-openstackdocstheme
-BuildRequires:  python-fixtures
+BuildRequires:  python2-sphinx
+BuildRequires:  python2-openstackdocstheme
+BuildRequires:  python2-fixtures
 
 %description -n python-%{pkg_name}-doc
 Documentation for the Oslo concurrency library.
@@ -81,10 +91,14 @@ Summary:    Tests for the Oslo concurrency library
 %{?python_provide:%python_provide python2-%{pkg_name}-tests}
 
 Requires:  python2-%{pkg_name} = %{version}-%{release}
-Requires:  python-hacking
-Requires:  python-oslotest
+Requires:  python2-hacking
+Requires:  python2-oslotest
+Requires:  python2-fixtures
+%if 0%{?fedora} > 0
+Requires:  python2-futures
+%else
 Requires:  python-futures
-Requires:  python-fixtures
+%endif
 
 
 %description -n python2-%{pkg_name}-tests
@@ -103,10 +117,11 @@ BuildRequires:  python3-oslotest
 BuildRequires:  python3-fixtures
 BuildRequires:  python3-eventlet
 
+Requires:       python3-pbr
 Requires:       python3-fixtures
-Requires:       python3-oslo-config >= 2:4.0.0
-Requires:       python3-oslo-i18n >= 2.1.0
-Requires:       python3-oslo-utils >= 3.20.0
+Requires:       python3-oslo-config >= 2:5.1.0
+Requires:       python3-oslo-i18n >= 3.15.3
+Requires:       python3-oslo-utils >= 3.33.0
 Requires:       python3-six
 Requires:       python3-fasteners
 Requires:       python-%{pkg_name}-lang = %{version}-%{release}
