@@ -49,10 +49,11 @@ BuildRequires:  python-fasteners
 # Required to compile translation files
 BuildRequires:  python-babel
 
+Requires:       python-pbr
 Requires:       python-fixtures
-Requires:       python-oslo-config >= 2:4.0.0
-Requires:       python-oslo-i18n >= 2.1.0
-Requires:       python-oslo-utils >= 3.20.0
+Requires:       python-oslo-config >= 2:5.1.0
+Requires:       python-oslo-i18n >= 3.15.3
+Requires:       python-oslo-utils >= 3.33.0
 Requires:       python-six
 Requires:       python-fasteners
 Requires:       python-enum34
@@ -103,10 +104,11 @@ BuildRequires:  python3-oslotest
 BuildRequires:  python3-fixtures
 BuildRequires:  python3-eventlet
 
+Requires:       python3-pbr
 Requires:       python3-fixtures
-Requires:       python3-oslo-config >= 2:4.0.0
-Requires:       python3-oslo-i18n >= 2.1.0
-Requires:       python3-oslo-utils >= 3.20.0
+Requires:       python3-oslo-config >= 2:5.1.0
+Requires:       python3-oslo-i18n >= 3.15.3
+Requires:       python3-oslo-utils >= 3.33.0
 Requires:       python3-six
 Requires:       python3-fasteners
 Requires:       python-%{pkg_name}-lang = %{version}-%{release}
