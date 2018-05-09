@@ -195,6 +195,7 @@ rm -rf %{buildroot}%{python3_sitelib}/oslo_concurrency/locale
 %find_lang oslo_concurrency --all-name
 
 %check
+export PYTHON_DISALLOW_AMBIGUOUS_VERSION=0
 %{__python2} setup.py test
 %if 0%{?with_python3}
 rm -rf .testrepository
