@@ -17,7 +17,7 @@ external processes.
 Tests for the Oslo concurrency library.
 
 Name:           python-oslo-concurrency
-Version:        3.25.0
+Version:        3.25.1
 Release:        1%{?dist}
 Summary:        OpenStack Oslo concurrency library
 
@@ -239,6 +239,9 @@ rm -rf .testrepository
 
 
 %changelog
+* Fri May 11 2018 RDO <dev@lists.rdoproject.org> 3.25.1-1
+- Update to 3.25.1
+
 * Sat Feb 10 2018 RDO <dev@lists.rdoproject.org> 3.25.0-1
 - Update to 3.25.0
 
