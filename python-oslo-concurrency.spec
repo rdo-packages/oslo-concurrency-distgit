@@ -56,7 +56,7 @@ BuildRequires:  python-enum34
 
 Requires:       python2-pbr
 Requires:       python2-fixtures
-Requires:       python2-oslo-config >= 2:5.1.0
+Requires:       python2-oslo-config >= 2:5.2.0
 Requires:       python2-oslo-i18n >= 3.15.3
 Requires:       python2-oslo-utils >= 3.33.0
 Requires:       python2-six
@@ -116,10 +116,14 @@ BuildRequires:  python3-hacking
 BuildRequires:  python3-oslotest
 BuildRequires:  python3-fixtures
 BuildRequires:  python3-eventlet
+BuildRequires:  python3-fasteners
+BuildRequires:  python3-oslo-config
+BuildRequires:  python3-oslo-i18n
+BuildRequires:  python3-oslo-utils
 
 Requires:       python3-pbr
 Requires:       python3-fixtures
-Requires:       python3-oslo-config >= 2:5.1.0
+Requires:       python3-oslo-config >= 2:5.2.0
 Requires:       python3-oslo-i18n >= 3.15.3
 Requires:       python3-oslo-utils >= 3.33.0
 Requires:       python3-six
