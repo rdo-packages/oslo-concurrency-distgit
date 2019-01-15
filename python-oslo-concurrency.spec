@@ -1,4 +1,4 @@
-%if 0%{?fedora} >= 24
+%if 0%{?fedora} >= 24 || 0%{?rhel} > 7
 %global with_python3 1
 %endif
 
@@ -46,7 +46,7 @@ BuildRequires:  python2-oslo-utils
 BuildRequires:  python2-fasteners
 # Required to compile translation files
 BuildRequires:  python2-babel
-%if 0%{?fedora} > 0
+%if 0%{?fedora} || 0%{?rhel} > 7
 BuildRequires:  python2-futures
 BuildRequires:  python2-enum34
 %else
@@ -61,7 +61,7 @@ Requires:       python2-oslo-i18n >= 3.15.3
 Requires:       python2-oslo-utils >= 3.33.0
 Requires:       python2-six
 Requires:       python2-fasteners
-%if 0%{?fedora} > 0
+%if 0%{?fedora} || 0%{?rhel} > 7
 Requires:       python2-enum34
 %else
 Requires:       python-enum34
@@ -76,10 +76,8 @@ Requires:       python-%{pkg_name}-lang = %{version}-%{release}
 %package  -n python-%{pkg_name}-doc
 Summary:    Documentation for the Oslo concurrency library
 Group:      Documentation
-
 BuildRequires:  python2-sphinx
 BuildRequires:  python2-openstackdocstheme
-BuildRequires:  python2-fixtures
 
 %description -n python-%{pkg_name}-doc
 Documentation for the Oslo concurrency library.
@@ -94,7 +92,7 @@ Requires:  python2-%{pkg_name} = %{version}-%{release}
 Requires:  python2-hacking
 Requires:  python2-oslotest
 Requires:  python2-fixtures
-%if 0%{?fedora} > 0
+%if 0%{?fedora} || 0%{?rhel} > 7
 Requires:  python2-futures
 %else
 Requires:  python-futures
