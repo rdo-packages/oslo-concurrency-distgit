@@ -119,7 +119,6 @@ BuildRequires:  python3-oslo-i18n
 BuildRequires:  python3-oslo-utils
 
 Requires:       python3-pbr
-Requires:       python3-fixtures
 Requires:       python3-oslo-config >= 2:5.2.0
 Requires:       python3-oslo-i18n >= 3.15.3
 Requires:       python3-oslo-utils >= 3.33.0
