@@ -55,7 +55,6 @@ BuildRequires:  python-enum34
 %endif
 
 Requires:       python2-pbr
-Requires:       python2-fixtures
 Requires:       python2-oslo-config >= 2:5.2.0
 Requires:       python2-oslo-i18n >= 3.15.3
 Requires:       python2-oslo-utils >= 3.33.0
