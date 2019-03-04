@@ -185,10 +185,16 @@ ln -s ./lockutils-wrapper-%{python2_version} %{buildroot}%{_bindir}/lockutils-wr
 
 # Install i18n .mo files (.po and .pot are not required)
 install -d -m 755 %{buildroot}%{_datadir}
+
+%if 0%{?with_python3}
+rm -f %{buildroot}%{python3_sitelib}/oslo_concurrency/locale/*/LC_*/oslo_concurrency*po
+rm -f %{buildroot}%{python3_sitelib}/oslo_concurrency/locale/*pot
+mv %{buildroot}%{python3_sitelib}/oslo_concurrency/locale %{buildroot}%{_datadir}/locale
+rm -rf %{buildroot}%{python2_sitelib}/oslo_concurrency/locale
+%else
 rm -f %{buildroot}%{python2_sitelib}/oslo_concurrency/locale/*/LC_*/oslo_concurrency*po
 rm -f %{buildroot}%{python2_sitelib}/oslo_concurrency/locale/*pot
 mv %{buildroot}%{python2_sitelib}/oslo_concurrency/locale %{buildroot}%{_datadir}/locale
-%if 0%{?with_python3}
 rm -rf %{buildroot}%{python3_sitelib}/oslo_concurrency/locale
 %endif
 
