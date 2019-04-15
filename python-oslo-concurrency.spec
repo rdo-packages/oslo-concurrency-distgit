@@ -77,6 +77,7 @@ Summary:    Documentation for the Oslo concurrency library
 Group:      Documentation
 BuildRequires:  python2-sphinx
 BuildRequires:  python2-openstackdocstheme
+BuildRequires:  python2-sphinxcontrib-apidoc
 
 %description -n python-%{pkg_name}-doc
 Documentation for the Oslo concurrency library.
