@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "52ec7aa5_da8914fe",
+        "filename": "python-oslo-concurrency.spec",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 403
+      },
+      "writtenOn": "2019-10-01T10:58:18Z",
+      "side": 1,
+      "message": "this can be cleaned up",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 6
+      },
+      "revId": "71529a601c8df4ed2e4fd415b154061b55d37cd3",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
