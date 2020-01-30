@@ -169,3 +169,4 @@ export PYTHON_DISALLOW_AMBIGUOUS_VERSION=0
 %license LICENSE
 
 %changelog
+# REMOVEME: error caused by commit http://git.openstack.org/cgit/openstack/oslo.concurrency/commit/?id=cfc27ef4972a99c5787e537b0f85067829517c4c
