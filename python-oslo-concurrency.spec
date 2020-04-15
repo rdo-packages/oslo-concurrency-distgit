@@ -1,14 +1,3 @@
-# Macros for py2/py3 compatibility
-%if 0%{?fedora} || 0%{?rhel} > 7
-%global pyver %{python3_pkgversion}
-%else
-%global pyver 2
-%endif
-%global pyver_bin python%{pyver}
-%global pyver_sitelib %python%{pyver}_sitelib
-%global pyver_install %py%{pyver}_install
-%global pyver_build %py%{pyver}_build
-# End of macros for py2/py3 compatibility
 
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 %global with_doc 1
@@ -37,43 +26,34 @@ BuildArch:      noarch
 %description
 %{common_desc}
 
-%package -n python%{pyver}-%{pkg_name}
+%package -n python3-%{pkg_name}
 Summary:        OpenStack Oslo concurrency library
-%{?python_provide:%python_provide python%{pyver}-%{pkg_name}}
+%{?python_provide:%python_provide python3-%{pkg_name}}
 
-BuildRequires:  python%{pyver}-devel
-BuildRequires:  python%{pyver}-pbr
+BuildRequires:  python3-devel
+BuildRequires:  python3-pbr
 BuildRequires:  git
 # Required for tests
-BuildRequires:  python%{pyver}-hacking
-BuildRequires:  python%{pyver}-oslotest
-BuildRequires:  python%{pyver}-fixtures
-BuildRequires:  python%{pyver}-eventlet
-BuildRequires:  python%{pyver}-oslo-config
-BuildRequires:  python%{pyver}-oslo-utils
-BuildRequires:  python%{pyver}-fasteners
+BuildRequires:  python3-hacking
+BuildRequires:  python3-oslotest
+BuildRequires:  python3-fixtures
+BuildRequires:  python3-eventlet
+BuildRequires:  python3-oslo-config
+BuildRequires:  python3-oslo-utils
+BuildRequires:  python3-fasteners
 # Required to compile translation files
-BuildRequires:  python%{pyver}-babel
-# Handle python2 exception
-%if %{pyver} == 2
-BuildRequires:  python%{pyver}-futures
-BuildRequires:  python-enum34
-%endif
+BuildRequires:  python3-babel
 
-Requires:       python%{pyver}-pbr
-Requires:       python%{pyver}-oslo-config >= 2:5.2.0
-Requires:       python%{pyver}-oslo-i18n >= 3.15.3
-Requires:       python%{pyver}-oslo-utils >= 3.33.0
-Requires:       python%{pyver}-six
-Requires:       python%{pyver}-fasteners
-# Handle python2 exception
-%if %{pyver} == 2
-Requires:       python-enum34
-%endif
+Requires:       python3-pbr
+Requires:       python3-oslo-config >= 2:5.2.0
+Requires:       python3-oslo-i18n >= 3.15.3
+Requires:       python3-oslo-utils >= 3.33.0
+Requires:       python3-six
+Requires:       python3-fasteners
 
 Requires:       python-%{pkg_name}-lang = %{version}-%{release}
 
-%description -n python%{pyver}-%{pkg_name}
+%description -n python3-%{pkg_name}
 %{common_desc}
 
 %if 0%{?with_doc}
@@ -81,29 +61,25 @@ Requires:       python-%{pkg_name}-lang = %{version}-%{release}
 %package  -n python-%{pkg_name}-doc
 Summary:    Documentation for the Oslo concurrency library
 Group:      Documentation
-BuildRequires:  python%{pyver}-sphinx
-BuildRequires:  python%{pyver}-openstackdocstheme
-BuildRequires:  python%{pyver}-sphinxcontrib-apidoc
+BuildRequires:  python3-sphinx
+BuildRequires:  python3-openstackdocstheme
+BuildRequires:  python3-sphinxcontrib-apidoc
 
 %description -n python-%{pkg_name}-doc
 Documentation for the Oslo concurrency library.
 
 %endif
 
-%package  -n python%{pyver}-%{pkg_name}-tests
+%package  -n python3-%{pkg_name}-tests
 Summary:    Tests for the Oslo concurrency library
-%{?python_provide:%python_provide python%{pyver}-%{pkg_name}-tests}
+%{?python_provide:%python_provide python3-%{pkg_name}-tests}
 
-Requires:  python%{pyver}-%{pkg_name} = %{version}-%{release}
-Requires:  python%{pyver}-hacking
-Requires:  python%{pyver}-oslotest
-Requires:  python%{pyver}-fixtures
-# Handle python2 exception
-%if %{pyver} == 2
-Requires:  python%{pyver}-futures
-%endif
+Requires:  python3-%{pkg_name} = %{version}-%{release}
+Requires:  python3-hacking
+Requires:  python3-oslotest
+Requires:  python3-fixtures
 
-%description -n python%{pyver}-%{pkg_name}-tests
+%description -n python3-%{pkg_name}-tests
 %{common_desc2}
 
 %package  -n python-%{pkg_name}-lang
@@ -118,43 +94,43 @@ Translation files for Oslo concurrency library
 rm -rf {test-,}requirements.txt
 
 %build
-%{pyver_build}
+%{py3_build}
 
 # Generate i18n files
-%{pyver_bin} setup.py compile_catalog -d build/lib/oslo_concurrency/locale
+python3 setup.py compile_catalog -d build/lib/oslo_concurrency/locale
 
 %if 0%{?with_doc}
 # generate html docs
-sphinx-build-%{pyver} -b html doc/source doc/build/html
-# remove the sphinx-build-%{pyver} leftovers
+sphinx-build-3 -b html doc/source doc/build/html
+# remove the sphinx-build-3 leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 %endif
 
 %install
-%{pyver_install}
-ln -s ./lockutils-wrapper %{buildroot}%{_bindir}/lockutils-wrapper-%{pyver}
+%{py3_install}
+ln -s ./lockutils-wrapper %{buildroot}%{_bindir}/lockutils-wrapper-3
 
 # Install i18n .mo files (.po and .pot are not required)
 install -d -m 755 %{buildroot}%{_datadir}
-rm -f %{buildroot}%{pyver_sitelib}/oslo_concurrency/locale/*/LC_*/oslo_concurrency*po
-rm -f %{buildroot}%{pyver_sitelib}/oslo_concurrency/locale/*pot
-mv %{buildroot}%{pyver_sitelib}/oslo_concurrency/locale %{buildroot}%{_datadir}/locale
+rm -f %{buildroot}%{python3_sitelib}/oslo_concurrency/locale/*/LC_*/oslo_concurrency*po
+rm -f %{buildroot}%{python3_sitelib}/oslo_concurrency/locale/*pot
+mv %{buildroot}%{python3_sitelib}/oslo_concurrency/locale %{buildroot}%{_datadir}/locale
 
 # Find language files
 %find_lang oslo_concurrency --all-name
 
 %check
 export PYTHON_DISALLOW_AMBIGUOUS_VERSION=0
-%{pyver_bin} setup.py test
+python3 setup.py test
 
-%files -n python%{pyver}-%{pkg_name}
+%files -n python3-%{pkg_name}
 %doc README.rst
 %license LICENSE
 %{_bindir}/lockutils-wrapper
-%{_bindir}/lockutils-wrapper-%{pyver}
-%{pyver_sitelib}/oslo_concurrency
-%{pyver_sitelib}/*.egg-info
-%exclude %{pyver_sitelib}/oslo_concurrency/tests
+%{_bindir}/lockutils-wrapper-3
+%{python3_sitelib}/oslo_concurrency
+%{python3_sitelib}/*.egg-info
+%exclude %{python3_sitelib}/oslo_concurrency/tests
 
 %if 0%{?with_doc}
 %files -n python-%{pkg_name}-doc
@@ -162,8 +138,8 @@ export PYTHON_DISALLOW_AMBIGUOUS_VERSION=0
 %doc doc/build/html
 %endif
 
-%files -n python%{pyver}-%{pkg_name}-tests
-%{pyver_sitelib}/oslo_concurrency/tests
+%files -n python3-%{pkg_name}-tests
+%{python3_sitelib}/oslo_concurrency/tests
 
 %files -n python-%{pkg_name}-lang -f oslo_concurrency.lang
 %license LICENSE
