@@ -14,8 +14,8 @@ external processes.
 Tests for the Oslo concurrency library.
 
 Name:           python-oslo-concurrency
-Version:        XXX
-Release:        XXX
+Version:        4.0.2
+Release:        1%{?dist}
 Summary:        OpenStack Oslo concurrency library
 
 License:        ASL 2.0
@@ -145,3 +145,6 @@ python3 setup.py test
 %license LICENSE
 
 %changelog
+* Thu Apr 23 2020 RDO <dev@lists.rdoproject.org> 4.0.2-1
+- Update to 4.0.2
+
