@@ -97,7 +97,7 @@ rm -rf {test-,}requirements.txt
 %{py3_build}
 
 # Generate i18n files
-python3 setup.py compile_catalog -d build/lib/oslo_concurrency/locale
+python3 setup.py compile_catalog -d build/lib/oslo_concurrency/locale --domain oslo_concurrency
 
 %if 0%{?with_doc}
 # generate html docs
