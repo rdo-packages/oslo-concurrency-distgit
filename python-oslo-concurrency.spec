@@ -45,7 +45,7 @@ Summary:        OpenStack Oslo concurrency library
 
 BuildRequires:  python3-devel
 BuildRequires:  python3-pbr
-BuildRequires:  git
+BuildRequires:  git-core
 # Required for tests
 BuildRequires:  python3-hacking
 BuildRequires:  python3-oslotest
