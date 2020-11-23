@@ -25,8 +25,8 @@ external processes.
 Tests for the Oslo concurrency library.
 
 Name:           python-oslo-concurrency
-Version:        3.30.0
-Release:        2%{?dist}
+Version:        3.30.1
+Release:        1%{?dist}
 Summary:        OpenStack Oslo concurrency library
 
 License:        ASL 2.0
@@ -169,6 +169,9 @@ export PYTHON_DISALLOW_AMBIGUOUS_VERSION=0
 %license LICENSE
 
 %changelog
+* Mon Nov 23 2020 RDO <dev@lists.rdoproject.org> 3.30.1-1
+- Update to 3.30.1
+
 * Thu Oct 03 2019 Joel Capitao <jcapitao@redhat.com> 3.30.0-2
 - Removed python2 subpackages in no el7 distros
 
