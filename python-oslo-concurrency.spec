@@ -161,3 +161,4 @@ python3 setup.py test
 %license LICENSE
 
 %changelog
+# REMOVEME: error caused by commit https://opendev.org/openstack/oslo.concurrency/commit/a9ccf0a64deb63e7ea07d232437da797462d8f4b
