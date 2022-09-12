@@ -56,6 +56,10 @@ BuildRequires:  python3-oslo-utils
 BuildRequires:  python3-fasteners
 # Required to compile translation files
 BuildRequires:  python3-babel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python3-tox
+BuildRequires:  python3-tox-current-env
+BuildRequires:  python3-stestr
 
 Requires:       python3-pbr
 Requires:       python3-oslo-config >= 2:5.2.0
@@ -90,6 +94,9 @@ Requires:  python3-%{pkg_name} = %{version}-%{release}
 Requires:  python3-hacking
 Requires:  python3-oslotest
 Requires:  python3-fixtures
+Requires:  python3-tox
+Requires:  python3-tox-current-env
+Requires:  python3-stestr
 
 %description -n python3-%{pkg_name}-tests
 %{common_desc2}
@@ -136,8 +143,7 @@ mv %{buildroot}%{python3_sitelib}/oslo_concurrency/locale %{buildroot}%{_datadir
 %find_lang oslo_concurrency --all-name
 
 %check
-export PYTHON_DISALLOW_AMBIGUOUS_VERSION=0
-python3 setup.py test
+%tox
 
 %files -n python3-%{pkg_name}
 %doc README.rst
