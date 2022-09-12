@@ -58,6 +58,30 @@
       "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8357214_dd16deb8",
+        "filename": "python-oslo-concurrency.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 635
+      },
+      "writtenOn": "2022-09-12T12:50:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbc6ed71_1f5105c1",
+      "range": {
+        "startLine": 19,
+        "startChar": 16,
+        "endLine": 19,
+        "endChar": 21
+      },
+      "revId": "ff0aa23de697c32e34c753190153fa90870f586f",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2dfbb149_53c026ac",
@@ -81,6 +105,30 @@
       "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1be3559a_66b3fb7e",
+        "filename": "python-oslo-concurrency.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 635
+      },
+      "writtenOn": "2022-09-12T12:50:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2dfbb149_53c026ac",
+      "range": {
+        "startLine": 164,
+        "startChar": 49,
+        "endLine": 164,
+        "endChar": 54
+      },
+      "revId": "ff0aa23de697c32e34c753190153fa90870f586f",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fdbc037b_2f7874ef",
@@ -94,6 +142,30 @@
       "writtenOn": "2022-09-12T11:25:41Z",
       "side": 1,
       "message": "5.0.0",
+      "range": {
+        "startLine": 165,
+        "startChar": 13,
+        "endLine": 165,
+        "endChar": 17
+      },
+      "revId": "ff0aa23de697c32e34c753190153fa90870f586f",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7f97aa7_b64f0d38",
+        "filename": "python-oslo-concurrency.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 635
+      },
+      "writtenOn": "2022-09-12T12:50:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fdbc037b_2f7874ef",
       "range": {
         "startLine": 165,
         "startChar": 13,
