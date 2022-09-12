@@ -16,6 +16,92 @@
       "message": "recheck",
       "revId": "ff0aa23de697c32e34c753190153fa90870f586f",
       "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c5058a9_3e3d0749",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 635
+      },
+      "writtenOn": "2022-09-12T11:25:41Z",
+      "side": 1,
+      "message": "Let\u0027s build 5.0.0 version as 5.0.1 has an issue currently (see comment in [1])\n\n[1] https://review.rdoproject.org/r/c/rdoinfo/+/44808",
+      "revId": "ff0aa23de697c32e34c753190153fa90870f586f",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbc6ed71_1f5105c1",
+        "filename": "python-oslo-concurrency.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 635
+      },
+      "writtenOn": "2022-09-12T11:25:41Z",
+      "side": 1,
+      "message": "5.0.0",
+      "range": {
+        "startLine": 19,
+        "startChar": 16,
+        "endLine": 19,
+        "endChar": 21
+      },
+      "revId": "ff0aa23de697c32e34c753190153fa90870f586f",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dfbb149_53c026ac",
+        "filename": "python-oslo-concurrency.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 635
+      },
+      "writtenOn": "2022-09-12T11:25:41Z",
+      "side": 1,
+      "message": "5.0.0",
+      "range": {
+        "startLine": 164,
+        "startChar": 49,
+        "endLine": 164,
+        "endChar": 54
+      },
+      "revId": "ff0aa23de697c32e34c753190153fa90870f586f",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdbc037b_2f7874ef",
+        "filename": "python-oslo-concurrency.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 635
+      },
+      "writtenOn": "2022-09-12T11:25:41Z",
+      "side": 1,
+      "message": "5.0.0",
+      "range": {
+        "startLine": 165,
+        "startChar": 13,
+        "endLine": 165,
+        "endChar": 17
+      },
+      "revId": "ff0aa23de697c32e34c753190153fa90870f586f",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
     }
   ]
 }
