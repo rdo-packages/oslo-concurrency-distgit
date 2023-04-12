@@ -17,7 +17,7 @@ Tests for the Oslo concurrency library.
 
 Name:           python-oslo-concurrency
 Version:        5.1.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        OpenStack Oslo concurrency library
 
 License:        ASL 2.0
@@ -94,8 +94,6 @@ Requires:  python3-%{pkg_name} = %{version}-%{release}
 Requires:  python3-hacking
 Requires:  python3-oslotest
 Requires:  python3-fixtures
-Requires:  python3-tox
-Requires:  python3-tox-current-env
 Requires:  python3-stestr
 
 %description -n python3-%{pkg_name}-tests
@@ -167,6 +165,9 @@ mv %{buildroot}%{python3_sitelib}/oslo_concurrency/locale %{buildroot}%{_datadir
 %license LICENSE
 
 %changelog
+* Wed Apr 12 2023 Alfredo Moralejo <amoralej@redhat.com> 5.1.1-2
+- Remove tox as runtime dependency for tests subpackage
+
 * Tue Mar 07 2023 RDO <dev@lists.rdoproject.org> 5.1.1-1
 - Update to 5.1.1
 
