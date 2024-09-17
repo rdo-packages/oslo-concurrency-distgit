@@ -1,0 +1,8 @@
+Verified+2: Zuul CI <zuul@review.rdoproject.org>
+Code-Review+2: Joel Capitao <jcapitao@redhat.com>
+Workflow+1: Joel Capitao <jcapitao@redhat.com>
+Submitted-by: Zuul CI <zuul@review.rdoproject.org>
+Submitted-at: Tue, 17 Sep 2024 08:02:56 +0000
+Reviewed-on: https://review.rdoproject.org/r/c/openstack/oslo-concurrency-distgit/+/54404
+Project: openstack/oslo-concurrency-distgit
+Branch: refs/heads/dalmatian-rdo
