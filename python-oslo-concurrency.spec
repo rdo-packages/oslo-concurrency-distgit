@@ -8,6 +8,10 @@
 %if ! 0%{?with_doc}
 %global excluded_brs %{excluded_brs} sphinx openstackdocstheme
 %endif
+# Exclude some BRs for Fedora
+%if 0%{?fedora}
+%global excluded_brs %{excluded_brs} eventlet
+%endif
 %global with_doc 1
 
 %global pypi_name oslo.concurrency
@@ -95,6 +99,9 @@ sed -i /^[[:space:]]*-c{env:.*_CONSTRAINTS_FILE.*/d tox.ini
 sed -i "s/^deps = -c{env:.*_CONSTRAINTS_FILE.*/deps =/" tox.ini
 sed -i /^minversion.*/d tox.ini
 sed -i /^requires.*virtualenv.*/d tox.ini
+%if 0%{?fedora}
+sed -i "s/TEST_EVENTLET=.*/TEST_EVENTLET=1/" tox.ini
+%endif
 
 # Exclude some bad-known BRs
 for pkg in %{excluded_brs}; do
